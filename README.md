@@ -10,9 +10,9 @@ of AWS
 ## Architecture
 
 ### Software
-**Frontend**: Nginx + P5JS
-**Backend**: FastAPI
-**Database**: PostgreSQL
+* **Frontend**: Nginx + P5JS
+* **Backend**: FastAPI
+* **Database**: PostgreSQL
 
 ### Hardware
 Single master node and single worker node. Each with 1 CPU with 1GiB RAM (AWS t2-micro)
