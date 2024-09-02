@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi
+  labels:
+    project: k8s-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: fastapi
+      labels:
+        app: backend
+    spec:
+      containers:
+        - image: agemstone/k8s-bc-backend
+          name: fastapi-app
+          env:
+            - name: DB_USER
+              value: fastapidb
+            - name: DB_PASS
+              value: hunter2
+            - name: DB_NAME
+              value: fastapidb
+      nodeSelector:
+        nodetype: worker
+  selector:
+    matchLabels:
+      app: backend

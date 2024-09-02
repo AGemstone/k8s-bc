@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    project: k8s-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: postgres
+      labels:
+        app: db
+    spec:
+      containers:
+        - image: postgres
+          name: postgres
+          env:
+            - name: POSTGRES_USER
+              value: fastapidb
+            - name: POSTGRES_PASSWORD
+              value: hunter2
+            - name: POSTGRES_DB
+              value: fastapidb
+      nodeSelector:
+        nodetype: worker
+  selector:
+    matchLabels:
+      app: db

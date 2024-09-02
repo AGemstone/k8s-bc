@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapidb
+spec:
+  selector:
+    #    project: k8s-app
+    app: db
+  ports:
+    - port: 5432
+      targetPort: 5432

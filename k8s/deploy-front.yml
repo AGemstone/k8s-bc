@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: p5js
+  labels:
+    project: k8s-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - image: agemstone/k8s-bc-frontend
+          name: nginx
+      nodeSelector:
+        nodetype: worker
+  selector:
+    matchLabels:
+      app: frontend
